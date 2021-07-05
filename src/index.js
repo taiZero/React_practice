@@ -1,13 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import App from './App';
 import CounterApp from './CounterApp';
 import reportWebVitals from './reportWebVitals';
+import { Switch,Route,Router,Redirect } from 'react-router-dom';
+import { createBrowserHistory } from "history";
+
+const hist = createBrowserHistory();
 
 ReactDOM.render(
-  <React.StrictMode>
-    <CounterApp />
-  </React.StrictMode>,
+  <Router history ={hist}>
+      <Switch>
+        <Route path="/app" compornent={App} />
+        <Route path="/counterapp" compornent={CounterApp} />
+        <Redirect from="/" to="/app" />
+      </Switch>
+  </Router>,
   document.getElementById('root')
 );
 
